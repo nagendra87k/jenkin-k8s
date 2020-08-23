@@ -19,12 +19,9 @@ node{
    
     stage('Deploy Application on K8s') {
         container('kubectl'){
-            withKubeConfig(
-            [
-            serverUrl: "104.198.161.8",
-            clusterName: "cluster-1"]
-            )
+            withKubeConfig()
             {
+                sh("gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project sturdy-shelter-284418")
                 sh("kubectl apply -f deployment.yaml")
             }
         }
