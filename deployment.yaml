@@ -6,7 +6,7 @@ metadata:
   name: todo-web-application-h2
   namespace: jenkins
 spec:
-  replicas: 3
+  replicas: 2
   minReadySeconds: 45
   selector:
     matchLabels:
