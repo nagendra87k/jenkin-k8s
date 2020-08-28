@@ -34,7 +34,7 @@ metadata:
   labels: #PODS
     app: todo-web-application-h2
   name: todo-web-application-h2
-  namespace: default
+  namespace: jenkins
 spec:
   ports:
   - nodePort: 30702
