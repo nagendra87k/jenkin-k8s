@@ -119,7 +119,7 @@
 				<configuration>
 					<repository>nagendra87k/${project.name}</repository>
 					<tag>${project.version}</tag>
-					<skipDockerInfo>false</skipDockerInfo>
+
 				</configuration>
 			</plugin>
 					</plugins>

@@ -17,7 +17,7 @@ node{
         sh "docker push nagendra87k/todo-web-application-h2:0.0.1-SNAPSHOT"
     }
     stage('Apply Kubernetes files') {
-    withKubeConfig([credentialsId: 'KUBERNETES', serverUrl: 'https://35.238.168.153']) {
+    withKubeConfig([credentialsId: 'KUBERNETES', serverUrl: 'https://35.193.177.239']) {
       sh 'kubectl apply -f deployment.yaml'
     }
     }
