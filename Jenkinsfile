@@ -1,6 +1,6 @@
 node{
     stage("Git Clone"){
-        git credentialsId: 'GITHUBID', url: 'https://github.com/nagenra87k/jenkin-k8s.git'
+        git credentialsId: 'GITHUB', url: 'https://github.com/nagenra87k/jenkin-k8s.git'
     }
     stage("MVN Clean Build"){
         def mavenHome = tool name:"Maven-3.6.1", type: "maven"
@@ -8,16 +8,16 @@ node{
         sh "${mavenCMD} clean package"
     }
     stage("Build Docker Images"){
-        sh "docker build -t nagenra87k/jenkin-k8s ."
+        sh "docker build -t ajayendra/jenkin-k8s ."
     }
     stage("Push Docker Images"){
-        withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENCIAL', variable: 'DOCKER_HUB_CREDENCIAL')]) {
-             sh "docker login -u nagendra87k -p ${DOCKER_HUB_CREDENCIAL}"
+        withCredentials([string(credentialsId: 'DockerHUB', variable: 'DockerHUB')]) {
+             sh "docker login -u ajayendra -p ${DockerHUB}"
         }
-        sh "docker push nagendra87k/todo-web-application-h2:0.0.1-SNAPSHOT"
+        sh "docker push ajayendra/todo-web-application-h2:0.0.1-SNAPSHOT"
     }
     stage('Apply Kubernetes files') {
-    withKubeConfig([credentialsId: 'KUBERNETES', serverUrl: 'https://35.193.177.239']) {
+    withKubeConfig([credentialsId: 'KUBERNETES', serverUrl: 'https://35.225.167.24']) {
       sh 'kubectl apply -f deployment.yaml'
     }
     }

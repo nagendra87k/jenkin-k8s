@@ -22,7 +22,7 @@ spec:
         app: todo-web-application-h2
     spec:
       containers:
-      - image: nagendra87k/todo-web-application-h2:0.0.1-SNAPSHOT
+      - image: ajayendra/todo-web-application-h2:0.0.1-SNAPSHOT
         imagePullPolicy: IfNotPresent
         name: todo-web-application-h2
       restartPolicy: Always
